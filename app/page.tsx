@@ -35,11 +35,16 @@ export default function Home() {
 
       {!loading && !error && sortedData.length > 0 && (
         <div className="space-y-5">
-          {sortedData.map(({ name, commits }) => (
-            <div key={name} className="flex items-center gap-4">
-              <span className="w-36 text-sm font-medium text-off-white">
+          {sortedData.map(({ repo, name, commits }) => (
+            <div key={repo} className="flex items-center gap-4">
+              <a
+                href={`https://github.com/${repo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-36 text-sm font-medium text-off-white hover:text-brand transition-colors"
+              >
                 {name}
-              </span>
+              </a>
               <div className="flex-1 flex items-center gap-3">
                 <div
                   className="h-10 rounded-sm min-w-[4px] transition-all bg-brand"
