@@ -26,10 +26,10 @@ async function getCommitCount(owner: string, repo: string): Promise<number> {
 
 export async function GET() {
   const results = await Promise.allSettled(
-    REPOS.map(async (fullName) => {
+    REPOS.map(async ({ repo: fullName, name }) => {
       const [owner, repo] = fullName.split("/");
       const count = await getCommitCount(owner, repo);
-      return { repo: fullName, name: repo, commits: count };
+      return { repo: fullName, name, commits: count };
     })
   );
 
@@ -37,8 +37,8 @@ export async function GET() {
     r.status === "fulfilled"
       ? r.value
       : {
-          repo: REPOS[i],
-          name: REPOS[i].split("/").pop() ?? "error",
+          repo: REPOS[i].repo,
+          name: REPOS[i].name,
           commits: 0,
         }
   );
