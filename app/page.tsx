@@ -24,7 +24,7 @@ export default function Home() {
   const maxCommits = Math.max(...data.map((d) => d.commits), 1);
 
   return (
-    <div className="pt-12 sm:pt-16">
+    <div className="py-12 sm:pt-16">
       <h1 className="text-3xl font-bold text-off-white mb-2">
         Which JumboCode team is the best???
       </h1>

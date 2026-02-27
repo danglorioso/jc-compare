@@ -16,6 +16,7 @@ export default function Footer() {
             >
               Dan Glorioso
             </a>
+            .
           </p>
         </div>
       </div>
